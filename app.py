@@ -8,9 +8,23 @@ st.set_page_config(page_title="CTE Sub Plan Generator", page_icon="📝", layout
 st.title("📝 CTE Sub Plan & Worksheet Generator")
 st.write("Select your class details below to generate ready-to-print PDF lesson plans and worksheets.")
 
+# Initialize Session State memory for persistent downloads
+if "pdf_sub" not in st.session_state:
+    st.session_state.pdf_sub = None
+if "pdf_student" not in st.session_state:
+    st.session_state.pdf_student = None
+if "file_prefix" not in st.session_state:
+    st.session_state.file_prefix = "CTE_Lesson"
+
 # Sidebar for API Key
 st.sidebar.header("Configuration")
-api_key = st.sidebar.text_input("Gemini API Key", type="password", help="Get your free API key at aistudio.google.com")
+
+# Check Streamlit Secrets first, otherwise fallback to text input
+if "GEMINI_API_KEY" in st.secrets:
+    api_key = st.secrets["GEMINI_API_KEY"]
+    st.sidebar.success("🔑 API Key loaded from Secrets!")
+else:
+    api_key = st.sidebar.text_input("Gemini API Key", type="password", help="Get your free API key at aistudio.google.com")
 
 st.subheader("Lesson Parameters")
 col1, col2 = st.columns(2)
@@ -148,28 +162,33 @@ if generate_btn:
                     html_sub = parts[0].replace("```html", "").replace("```", "").strip()
                     html_student = parts[1].replace("```html", "").replace("```", "").strip()
 
-                    pdf_sub = HTML(string=html_sub).write_pdf()
-                    pdf_student = HTML(string=html_student).write_pdf()
+                    # Save PDFs into persistent session state memory
+                    st.session_state.pdf_sub = HTML(string=html_sub).write_pdf()
+                    st.session_state.pdf_student = HTML(string=html_student).write_pdf()
+                    st.session_state.file_prefix = cte_course.replace(' ', '_')
 
-                    st.success("✨ Lesson Package Ready!")
-                    col_dl1, col_dl2 = st.columns(2)
-                    with col_dl1:
-                        st.download_button(
-                            label="📄 Download Sub Plan (PDF)",
-                            data=pdf_sub,
-                            file_name=f"Sub_Plan_{cte_course.replace(' ', '_')}.pdf",
-                            mime="application/pdf",
-                            use_container_width=True
-                        )
-                    with col_dl2:
-                        st.download_button(
-                            label="📄 Download Worksheet (PDF)",
-                            data=pdf_student,
-                            file_name=f"Student_Worksheet_{cte_course.replace(' ', '_')}.pdf",
-                            mime="application/pdf",
-                            use_container_width=True
-                        )
                 else:
                     st.error("Error formatting documents. Please try clicking generate again.")
         except Exception as e:
             st.error(f"Error: {str(e)}")
+
+# Always display the download buttons if PDFs are saved in memory
+if st.session_state.pdf_sub and st.session_state.pdf_student:
+    st.success("✨ Lesson Package Ready!")
+    col_dl1, col_dl2 = st.columns(2)
+    with col_dl1:
+        st.download_button(
+            label="📄 Download Sub Plan (PDF)",
+            data=st.session_state.pdf_sub,
+            file_name=f"Sub_Plan_{st.session_state.file_prefix}.pdf",
+            mime="application/pdf",
+            use_container_width=True
+        )
+    with col_dl2:
+        st.download_button(
+            label="📄 Download Student Worksheet (PDF)",
+            data=st.session_state.pdf_student,
+            file_name=f"Student_Worksheet_{st.session_state.file_prefix}.pdf",
+            mime="application/pdf",
+            use_container_width=True
+        )
