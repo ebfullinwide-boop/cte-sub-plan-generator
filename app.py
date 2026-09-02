@@ -1,3 +1,4 @@
+import time
 import streamlit as st
 from google import genai
 from weasyprint import HTML
@@ -151,10 +152,32 @@ if generate_btn:
                 </body></html>
                 """
 
-                response = client.models.generate_content(
-                    model='gemini-3.6-flash',
-                    contents=prompt
-                )
+                # Retry loop with fallbacks for high-traffic server errors (503)
+                models_to_try = ['gemini-3.6-flash', 'gemini-2.5-flash']
+                response = None
+                last_exception = None
+
+                for model_name in models_to_try:
+                    for attempt in range(2):  # Try twice per model
+                        try:
+                            response = client.models.generate_content(
+                                model=model_name,
+                                contents=prompt
+                            )
+                            if response and response.text:
+                                break
+                        except Exception as err:
+                            last_exception = err
+                            if "503" in str(err) or "UNAVAILABLE" in str(err):
+                                time.sleep(3)  # Wait 3 seconds before retrying
+                                continue
+                            else:
+                                raise err
+                    if response and response.text:
+                        break
+
+                if not response or not response.text:
+                    raise last_exception or Exception("Server busy. Please try again in a few moments.")
 
                 raw_text = response.text
                 if "===SPLIT_HERE===" in raw_text:
@@ -170,7 +193,7 @@ if generate_btn:
                 else:
                     st.error("Error formatting documents. Please try clicking generate again.")
         except Exception as e:
-            st.error(f"Error: {str(e)}")
+            st.error(f"Google API is currently experiencing heavy traffic (503). Please wait 10 seconds and try again. Full log: {str(e)}")
 
 # Always display the download buttons if PDFs are saved in memory
 if st.session_state.pdf_sub and st.session_state.pdf_student:
