@@ -86,13 +86,16 @@ if generate_btn:
                 CLASS DURATION: {duration} minutes
                 SPECIFIC SCENARIO: {custom_scenario if custom_scenario else "Create a realistic, trade-specific high-stakes ethical/safety scenario."}
 
+                IMPORTANT QUESTION GRADE LEVEL REQUIREMENT:
+                Write all four (4) written response questions strictly at an 8TH-GRADE READING LEVEL. Use clear, direct, concise sentences. Avoid complex academic jargon in the questions while still requiring students to think critically about trade safety and decision-making.
+
                 FORMAT REQUIREMENT: Output EXACTLY two raw HTML code blocks separated by the exact delimiter text `===SPLIT_HERE===`. Do not include conversational text or Markdown outside these blocks.
 
                 --- HTML DOCUMENT 1 (SUB PLAN) BLUEPRINT ---
                 <!DOCTYPE html>
                 <html><head><style>
                     @page {{ size: A4; margin: 20mm 15mm; background-color: #f4f6f9; }}
-                    body {{ font-family: Helvetica, sans-serif; color: #333; line-height: 1.6; }}
+                    body {{ font-family: Helvetica, Arial, sans-serif; color: #333; line-height: 1.6; }}
                     .header {{ background-color: #1e3a8a; color: white; padding: 20px; margin: -20mm -15mm 20px -15mm; text-align: center; }}
                     h1 {{ margin: 0; font-size: 22pt; }}
                     h2 {{ color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 5px; margin-top: 20px; }}
@@ -121,34 +124,61 @@ if generate_btn:
                 <!DOCTYPE html>
                 <html><head><style>
                     @page {{ size: A4; margin: 15mm; }}
-                    body {{ font-family: 'Georgia', serif; color: #222; line-height: 1.5; font-size: 11pt; }}
-                    .header-table {{ width: 100%; border-bottom: 2px solid #222; margin-bottom: 20px; }}
-                    .title {{ text-align: center; font-size: 18pt; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; }}
-                    h2 {{ font-size: 14pt; border-bottom: 1px solid #ccc; margin-top: 15px; }}
-                    h3 {{ font-size: 12pt; background-color: #eee; padding: 5px; margin-top: 15px; }}
-                    .instructions {{ background-color: #f9f9f9; border: 1px solid #ddd; padding: 10px; font-style: italic; margin-bottom: 15px; }}
-                    .line {{ border-bottom: 1px solid #a0aab5; height: 26px; width: 100%; }}
+                    body {{ font-family: Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.6; font-size: 10pt; }}
+                    .header-table {{ width: 100%; border-bottom: 2px solid #1e3a8a; margin-bottom: 12px; padding-bottom: 6px; }}
+                    .title {{ text-align: center; font-size: 16pt; font-weight: bold; color: #0f172a; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; }}
+                    .instructions {{ background-color: #f1f5f9; border-left: 4px solid #1e3a8a; padding: 10px 14px; margin-bottom: 14px; font-style: italic; font-size: 9.5pt; color: #334155; border-radius: 0 4px 4px 0; }}
+                    .version-card {{ background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px 14px; margin-bottom: 14px; }}
+                    .version-title {{ font-size: 10.5pt; font-weight: bold; color: #1e3a8a; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }}
+                    .version-card p {{ margin: 0; line-height: 1.55; text-align: justify; }}
+                    h2 {{ font-size: 14pt; color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 4px; margin-top: 10px; margin-bottom: 14px; text-transform: uppercase; }}
+                    .q-box {{ margin-bottom: 14px; }}
+                    .q-title {{ font-weight: bold; color: #0f172a; margin-bottom: 4px; font-size: 10pt; }}
+                    .line {{ border-bottom: 1px solid #94a3b8; height: 23px; width: 100%; }}
                 </style></head><body>
                     <table class="header-table"><tr>
                         <td style="width: 60%;"><strong>Name:</strong> ___________________<br><strong>Date:</strong> _______ <strong>Period:</strong> ___</td>
                         <td style="text-align: right;"><strong>{cte_course}</strong><br>{wrs_skill}</td>
                     </tr></table>
                     <div class="title">[Insert Creative Case Study Title]</div>
-                    <div class="instructions">Instructions: Choose one version to read, then answer the questions on the lines provided.</div>
-                    <h3>Version A: Standard Level</h3>
-                    <p>[Write 350-word, 7th-8th grade reading level scenario contextualized to {cte_course}]</p>
-                    <h3>Version B: Enrichment Level</h3>
-                    <p>[Write 450-word, 11th-12th grade reading level scenario contextualized to {cte_course}]</p>
+                    <div class="instructions">Following are two versions of the same scenario. Choose one to read, then proceed to the back page to answer all four analytical questions in full sentences.</div>
+                    
+                    <div class="version-card">
+                        <div class="version-title">Version A: Standard Level</div>
+                        <p>[Write 350-word, 7th-8th grade reading level scenario contextualized to {cte_course}]</p>
+                    </div>
+
+                    <div class="version-card">
+                        <div class="version-title">Version B: Enrichment Level</div>
+                        <p>[Write 450-word, 11th-12th grade reading level scenario contextualized to {cte_course}]</p>
+                    </div>
+
                     <div style="page-break-before: always;"></div>
                     <h2>Written Responses</h2>
-                    <p><strong>1. Analyze the Conflict:</strong> [Write Trade-specific question 1]</p>
-                    <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
-                    <p><strong>2. Evaluate the Options:</strong> [Write Question 2]</p>
-                    <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
-                    <p><strong>3. Workplace Psychology:</strong> [Write Question 3]</p>
-                    <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
-                    <p><strong>4. Script the Conversation:</strong> [Write Question 4]</p>
-                    <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+                    
+                    <div class="q-box">
+                        <p class="q-title">1. Identify the Main Problem:</p>
+                        <p style="margin:0 0 6px 0; font-size: 9.5pt; color: #475569;">[Write an 8th-grade level trade-specific question asking students to explain what went wrong and why it was dangerous]</p>
+                        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+                    </div>
+
+                    <div class="q-box">
+                        <p class="q-title">2. Better Choices:</p>
+                        <p style="margin:0 0 6px 0; font-size: 9.5pt; color: #475569;">[Write an 8th-grade level question asking what safe choices the worker should have made instead of rushing]</p>
+                        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+                    </div>
+
+                    <div class="q-box">
+                        <p class="q-title">3. Handling Workplace Pressure:</p>
+                        <p style="margin:0 0 6px 0; font-size: 9.5pt; color: #475569;">[Write an 8th-grade level question asking how pressure from time or coworkers affected the decision]</p>
+                        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+                    </div>
+
+                    <div class="q-box">
+                        <p class="q-title">4. Speak Up (Script Your Answer):</p>
+                        <p style="margin:0 0 6px 0; font-size: 9.5pt; color: #475569;">[Write an 8th-grade level prompt asking students to write two respectful sentences refusing to do something unsafe]</p>
+                        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+                    </div>
                 </body></html>
                 """
 
@@ -158,7 +188,7 @@ if generate_btn:
                 last_exception = None
 
                 for model_name in models_to_try:
-                    for attempt in range(2):  # Try twice per model
+                    for attempt in range(2):
                         try:
                             response = client.models.generate_content(
                                 model=model_name,
@@ -169,7 +199,7 @@ if generate_btn:
                         except Exception as err:
                             last_exception = err
                             if "503" in str(err) or "UNAVAILABLE" in str(err):
-                                time.sleep(3)  # Wait 3 seconds before retrying
+                                time.sleep(3)
                                 continue
                             else:
                                 raise err
