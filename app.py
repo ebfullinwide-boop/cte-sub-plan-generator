@@ -79,15 +79,40 @@ if generate_btn:
                 client = genai.Client(api_key=api_key)
 
                 prompt = f"""
-                You are an expert high school CTE curriculum writer. Generate TWO separate, production-ready HTML documents for a lesson.
+                You are an expert CTE Curriculum Developer & Technical Writer. Generate TWO separate, production-ready HTML documents for a lesson package.
 
                 COURSE: {cte_course}
                 WRS SKILL: {wrs_skill}
                 CLASS DURATION: {duration} minutes
                 SPECIFIC SCENARIO: {custom_scenario if custom_scenario else "Create a realistic, trade-specific high-stakes ethical/safety scenario."}
 
-                IMPORTANT QUESTION GRADE LEVEL REQUIREMENT:
-                Write all four (4) written response questions strictly at an 8TH-GRADE READING LEVEL. Use clear, direct, concise sentences. Avoid complex academic jargon in the questions while still requiring students to think critically about trade safety and decision-making.
+                === MANDATORY WORKSHEET READABILITY & FORMATTING REQUIREMENTS ===
+                Role: Expert CTE Curriculum Developer & Technical Writer.
+                Task: Rewrite and format the two CTE reading scenarios (Version A: Standard and Version B: Enrichment) to maximize readability, engagement, and information retention using modern CTE job-aid design principles.
+
+                1. STRUCTURAL CHUNKING:
+                   - Break continuous narrative paragraphs into logical, short sections using bold subheadings (e.g., ### Context & Time Pressure, ### The Technical Dilemma, ### Supervisor Pressure & Failure).
+                   - Strictly limit each narrative section paragraph to a MAXIMUM of 2-3 sentences.
+
+                2. TECHNICAL CALLOUT BOX:
+                   - Position a visually distinct summary callout block (<div class="callout-box">) at the top of EACH version detailing:
+                     • Job & Equipment: [e.g., SUV Front Brake Service / Commercial Transport Overhaul]
+                     • Key Hardware: [e.g., Aluminum Steering Knuckle / High-Torque Pneumatic Setup]
+                     • Critical Failure: [e.g., Stripped Caliper Bolt Threads / Shattered Chrome Socket]
+                     • Safety Hazard: [e.g., Caliper detachment, flying metal shrapnel, workplace injury]
+
+                3. VISUAL SCAFFOLDING & BOLDING:
+                   - Bold all critical trade tools, mechanical parts, spec values, regulations, and ethical choices (e.g., <b>pneumatic impact wrench</b>, <b>hand torque wrench</b>, <b>95 ft-lbs</b>, <b>OSHA Standard 1910.242</b>, <b>aluminum knuckle</b>).
+
+                4. DIFFERENTIATED READING TARGETS:
+                   - Version A (Standard Level): Use direct, clear syntax at an 8th-9th grade reading level. Define technical concepts naturally within the narrative.
+                   - Version B (Enrichment Level): Maintain rigorous industry-level vocabulary (e.g., anaerobic threadlocker, KPIs, OEM assembly, tort liability, ductility vs brittle failure), but use scannable formatting and short sentences so advanced text remains accessible.
+
+                5. CONTENT FIDELITY:
+                   - Do NOT remove core story facts (time pressure, equipment limits, manager/coworker pressure, ethical shortcut, mechanical failure, safety consequences). The story must remain 100% compatible with the 4 analytical questions at the end of the worksheet.
+
+                6. QUESTION GRADE LEVEL:
+                   - Write all four (4) written response questions strictly at a clear, direct 8TH-GRADE READING LEVEL.
 
                 FORMAT REQUIREMENT: Output EXACTLY two raw HTML code blocks separated by the exact delimiter text `===SPLIT_HERE===`. Do not include conversational text or Markdown outside these blocks.
 
@@ -123,18 +148,25 @@ if generate_btn:
                 --- HTML DOCUMENT 2 (STUDENT WORKSHEET) BLUEPRINT ---
                 <!DOCTYPE html>
                 <html><head><style>
-                    @page {{ size: A4; margin: 15mm; }}
-                    body {{ font-family: Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.6; font-size: 10pt; }}
-                    .header-table {{ width: 100%; border-bottom: 2px solid #1e3a8a; margin-bottom: 12px; padding-bottom: 6px; }}
-                    .title {{ text-align: center; font-size: 16pt; font-weight: bold; color: #0f172a; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; }}
-                    .instructions {{ background-color: #f1f5f9; border-left: 4px solid #1e3a8a; padding: 10px 14px; margin-bottom: 14px; font-style: italic; font-size: 9.5pt; color: #334155; border-radius: 0 4px 4px 0; }}
-                    .version-card {{ background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px 14px; margin-bottom: 14px; }}
-                    .version-title {{ font-size: 10.5pt; font-weight: bold; color: #1e3a8a; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }}
-                    .version-card p {{ margin: 0; line-height: 1.55; text-align: justify; }}
-                    h2 {{ font-size: 14pt; color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 4px; margin-top: 10px; margin-bottom: 14px; text-transform: uppercase; }}
-                    .q-box {{ margin-bottom: 14px; }}
-                    .q-title {{ font-weight: bold; color: #0f172a; margin-bottom: 4px; font-size: 10pt; }}
-                    .line {{ border-bottom: 1px solid #94a3b8; height: 23px; width: 100%; }}
+                    @page {{ size: A4; margin: 12mm 15mm; }}
+                    body {{ font-family: Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.45; font-size: 9pt; }}
+                    .header-table {{ width: 100%; border-bottom: 2px solid #1e3a8a; margin-bottom: 8px; padding-bottom: 4px; }}
+                    .title {{ text-align: center; font-size: 14pt; font-weight: bold; color: #0f172a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }}
+                    .instructions {{ background-color: #f1f5f9; border-left: 4px solid #1e3a8a; padding: 6px 10px; margin-bottom: 10px; font-style: italic; font-size: 8.5pt; color: #334155; border-radius: 0 4px 4px 0; }}
+                    
+                    .version-card {{ background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; margin-bottom: 10px; }}
+                    .version-title {{ font-size: 9.5pt; font-weight: bold; color: #1e3a8a; border-bottom: 1.5px solid #cbd5e1; padding-bottom: 3px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }}
+                    
+                    .callout-box {{ background-color: #f0f9ff; border: 1px solid #bae6fd; border-left: 3.5px solid #0284c7; padding: 6px 8px; margin-bottom: 8px; font-size: 8pt; border-radius: 3px; color: #0369a1; line-height: 1.35; }}
+                    .callout-box strong {{ color: #0c4a6e; }}
+                    
+                    .subheading {{ font-size: 8.5pt; font-weight: bold; color: #0f172a; margin-top: 6px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.3px; }}
+                    .version-card p {{ margin: 0 0 4px 0; line-height: 1.4; text-align: left; }}
+                    
+                    h2 {{ font-size: 12pt; color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 3px; margin-top: 8px; margin-bottom: 10px; text-transform: uppercase; }}
+                    .q-box {{ margin-bottom: 10px; }}
+                    .q-title {{ font-weight: bold; color: #0f172a; margin-bottom: 2px; font-size: 9pt; }}
+                    .line {{ border-bottom: 1px solid #94a3b8; height: 21px; width: 100%; }}
                 </style></head><body>
                     <table class="header-table"><tr>
                         <td style="width: 60%;"><strong>Name:</strong> ___________________<br><strong>Date:</strong> _______ <strong>Period:</strong> ___</td>
@@ -144,39 +176,61 @@ if generate_btn:
                     <div class="instructions">Following are two versions of the same scenario. Choose one to read, then proceed to the back page to answer all four analytical questions in full sentences.</div>
                     
                     <div class="version-card">
-                        <div class="version-title">Version A: Standard Level</div>
-                        <p>[Write 350-word, 7th-8th grade reading level scenario contextualized to {cte_course}]</p>
+                        <div class="version-title">Version A: Standard Level (8th–9th Grade Reading Target)</div>
+                        <div class="callout-box">
+                            <strong>Job & Equipment:</strong> [Insert Details]<br>
+                            <strong>Key Hardware:</strong> [Insert Details]<br>
+                            <strong>Critical Failure:</strong> [Insert Details]<br>
+                            <strong>Safety Hazard:</strong> [Insert Details]
+                        </div>
+                        <div class="subheading">Context & Time Crunch</div>
+                        <p>[2-3 short sentences. Bold key trade tools, specs, and parts.]</p>
+                        <div class="subheading">The Technical Dilemma</div>
+                        <p>[2-3 short sentences explaining the technical issue and shortcut.]</p>
+                        <div class="subheading">Supervisor Pressure & Failure</div>
+                        <p>[2-3 short sentences detailing pressure, choice made, and physical consequence.]</p>
                     </div>
 
                     <div class="version-card">
-                        <div class="version-title">Version B: Enrichment Level</div>
-                        <p>[Write 450-word, 11th-12th grade reading level scenario contextualized to {cte_course}]</p>
+                        <div class="version-title">Version B: Enrichment Level (Advanced / Industry Target)</div>
+                        <div class="callout-box">
+                            <strong>Job & Equipment:</strong> [Insert Industry Details]<br>
+                            <strong>Key Hardware:</strong> [Insert Advanced Specs]<br>
+                            <strong>Critical Failure:</strong> [Insert Engineering Failure]<br>
+                            <strong>Safety Hazard:</strong> [Insert Regulatory / Physical Hazard]
+                        </div>
+                        <div class="subheading">Operational Context & Metrics</div>
+                        <p>[2-3 short sentences using rigorous industry vocabulary with bolding.]</p>
+                        <div class="subheading">Material Physics & Procedural Violation</div>
+                        <p>[2-3 short sentences with technical specifications and OSHA standards.]</p>
+                        <div class="subheading">Authority Bias & Catastrophic Outcome</div>
+                        <p>[2-3 short sentences detailing production pressure, decision, and severe system failure.]</p>
                     </div>
 
                     <div style="page-break-before: always;"></div>
                     <h2>Written Responses</h2>
                     
                     <div class="q-box">
-                        <p class="q-title">1. Identify the Main Problem:</p>
-                        <p style="margin:0 0 6px 0; font-size: 9.5pt; color: #475569;">[Write an 8th-grade level trade-specific question asking students to explain what went wrong and why it was dangerous]</p>
+                        <p class="q-title">1. Identify the Main Technical Hazard:</p>
+                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level trade question asking what went wrong mechanically and why it was dangerous]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
                     <div class="q-box">
-                        <p class="q-title">2. Better Choices:</p>
-                        <p style="margin:0 0 6px 0; font-size: 9.5pt; color: #475569;">[Write an 8th-grade level question asking what safe choices the worker should have made instead of rushing]</p>
+                        <p class="q-title">2. Safe Alternatives:</p>
+                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level question asking what safe choices the technician should have made instead of taking a shortcut]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
                     <div class="q-box">
-                        <p class="q-title">3. Handling Workplace Pressure:</p>
-                        <p style="margin:0 0 6px 0; font-size: 9.5pt; color: #475569;">[Write an 8th-grade level question asking how pressure from time or coworkers affected the decision]</p>
+                        <p class="q-title">3. Workplace Culture & Pressure:</p>
+                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level question asking how rush deadlines or supervisor influence changed their choices]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
                     <div class="q-box">
-                        <p class="q-title">4. Speak Up (Script Your Answer):</p>
-                        <p style="margin:0 0 6px 0; font-size: 9.5pt; color: #475569;">[Write an 8th-grade level prompt asking students to write two respectful sentences refusing to do something unsafe]</p>
+                        <p class="q-title">4. Professional Scripting:</p>
+                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level prompt asking students to write a two-sentence polite refusal to perform an unsafe task]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
                 </body></html>
