@@ -75,7 +75,7 @@ if generate_btn:
         st.error("Please select or enter a CTE course.")
     else:
         try:
-            with st.spinner("Writing lesson content & compiling PDF printables..."):
+            with st.spinner("Writing detailed lesson content & compiling PDF printables..."):
                 client = genai.Client(api_key=api_key)
 
                 prompt = f"""
@@ -86,32 +86,35 @@ if generate_btn:
                 CLASS DURATION: {duration} minutes
                 SPECIFIC SCENARIO: {custom_scenario if custom_scenario else "Create a realistic, trade-specific high-stakes ethical/safety scenario."}
 
-                === MANDATORY WORKSHEET READABILITY & FORMATTING REQUIREMENTS ===
+                === MANDATORY WORKSHEET READABILITY, LENGTH & FORMATTING REQUIREMENTS ===
 
                 1. SECTION LABELS:
                    - Label the two reading options exactly as:
                      • `Standard Reading`
                      • `Enrichment Reading`
 
-                2. READABILITY & LANGUAGE TARGETS:
+                2. LENGTH & NARRATIVE DEPTH REQUIREMENT:
+                   - Expand the reading scenarios into rich, engaging, multi-paragraph case studies (~300 to 400 words EACH).
+                   - Each of the 3 sub-sections must contain 4 TO 6 FULL SENTENCES. Include detailed dialogue, realistic shop environment details, and clear step-by-step technical context.
+
+                3. READABILITY & LANGUAGE TARGETS:
                    - Standard Reading: Write strictly at a 5TH-GRADE READING LEVEL. Use simple, direct, plain English words and short sentences. DO NOT use administrative numbers (e.g., no OSHA code citations like 1910.242), legal terms (e.g., no "tort liability"), or heavy corporate jargon.
                    - Enrichment Reading: Write at a high school technical level. Focus on real trade mechanics, equipment specs, and material science, but avoid dry legal citations or academic bureaucracy. Keep it scannable, engaging, and practical.
 
-                3. STRUCTURAL CHUNKING:
-                   - Break continuous narrative paragraphs into logical, short sections using bold subheadings (e.g., ### Context & Time Crunch, ### The Technical Dilemma, ### Supervisor Pressure & Failure).
-                   - Strictly limit each narrative section paragraph to a MAXIMUM of 2-3 sentences.
+                4. STRUCTURAL CHUNKING:
+                   - Break narrative paragraphs into logical sections using bold subheadings (e.g., ### Context & Time Crunch, ### The Technical Dilemma, ### Supervisor Pressure & Failure).
 
-                4. TECHNICAL CALLOUT BOX:
+                5. TECHNICAL CALLOUT BOX:
                    - Position a summary callout block (<div class="callout-box">) at the top of EACH version detailing:
                      • Job & Equipment: [e.g., Roof Truss Installation / Vehicle Service]
                      • Key Hardware: [e.g., Structural Screws vs. Framing Nails]
                      • Critical Failure: [e.g., Fastener snapping under heavy load]
                      • Safety Hazard: [e.g., Structural collapse, serious injury]
 
-                5. VISUAL SCAFFOLDING & BOLDING:
+                6. VISUAL SCAFFOLDING & BOLDING:
                    - Bold all critical trade tools, mechanical parts, spec values, and ethical choices (e.g., <b>structural screws</b>, <b>framing nails</b>, <b>500 lbs</b>, <b>impact driver</b>).
 
-                6. QUESTION GRADE LEVEL:
+                7. QUESTION GRADE LEVEL:
                    - Write all four (4) written response questions strictly at a clear, direct 8TH-GRADE READING LEVEL.
 
                 FORMAT REQUIREMENT: Output EXACTLY two raw HTML code blocks separated by the exact delimiter text `===SPLIT_HERE===`. Do not include conversational text or Markdown outside these blocks.
@@ -148,25 +151,25 @@ if generate_btn:
                 --- HTML DOCUMENT 2 (STUDENT WORKSHEET) BLUEPRINT ---
                 <!DOCTYPE html>
                 <html><head><style>
-                    @page {{ size: A4; margin: 12mm 15mm; }}
-                    body {{ font-family: Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.45; font-size: 9.5pt; }}
-                    .header-table {{ width: 100%; border-bottom: 2px solid #1e3a8a; margin-bottom: 8px; padding-bottom: 4px; }}
-                    .title {{ text-align: center; font-size: 14pt; font-weight: bold; color: #0f172a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }}
-                    .instructions {{ background-color: #f1f5f9; border-left: 4px solid #1e3a8a; padding: 6px 10px; margin-bottom: 10px; font-style: italic; font-size: 8.5pt; color: #334155; border-radius: 0 4px 4px 0; }}
+                    @page {{ size: A4; margin: 10mm 12mm; }}
+                    body {{ font-family: Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.35; font-size: 8.5pt; }}
+                    .header-table {{ width: 100%; border-bottom: 2px solid #1e3a8a; margin-bottom: 6px; padding-bottom: 2px; }}
+                    .title {{ text-align: center; font-size: 13pt; font-weight: bold; color: #0f172a; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }}
+                    .instructions {{ background-color: #f1f5f9; border-left: 3px solid #1e3a8a; padding: 4px 8px; margin-bottom: 8px; font-style: italic; font-size: 8pt; color: #334155; border-radius: 0 3px 3px 0; }}
                     
-                    .version-card {{ background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; }}
-                    .version-title {{ font-size: 10pt; font-weight: bold; color: #1e3a8a; border-bottom: 1.5px solid #cbd5e1; padding-bottom: 3px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }}
+                    .version-card {{ background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 5px; padding: 6px 8px; margin-bottom: 8px; }}
+                    .version-title {{ font-size: 9.5pt; font-weight: bold; color: #1e3a8a; border-bottom: 1px solid #cbd5e1; padding-bottom: 2px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }}
                     
-                    .callout-box {{ background-color: #f0f9ff; border: 1px solid #bae6fd; border-left: 3.5px solid #0284c7; padding: 6px 8px; margin-bottom: 8px; font-size: 8.5pt; border-radius: 3px; color: #0369a1; line-height: 1.35; }}
+                    .callout-box {{ background-color: #f0f9ff; border: 1px solid #bae6fd; border-left: 3px solid #0284c7; padding: 4px 6px; margin-bottom: 6px; font-size: 7.5pt; border-radius: 3px; color: #0369a1; line-height: 1.25; }}
                     .callout-box strong {{ color: #0c4a6e; }}
                     
-                    .subheading {{ font-size: 8.5pt; font-weight: bold; color: #0f172a; margin-top: 6px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.3px; }}
-                    .version-card p {{ margin: 0 0 4px 0; line-height: 1.4; text-align: left; }}
+                    .subheading {{ font-size: 8pt; font-weight: bold; color: #0f172a; margin-top: 4px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.3px; }}
+                    .version-card p {{ margin: 0 0 3px 0; line-height: 1.35; text-align: left; }}
                     
-                    h2 {{ font-size: 12pt; color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 3px; margin-top: 8px; margin-bottom: 10px; text-transform: uppercase; }}
-                    .q-box {{ margin-bottom: 10px; }}
-                    .q-title {{ font-weight: bold; color: #0f172a; margin-bottom: 2px; font-size: 9pt; }}
-                    .line {{ border-bottom: 1px solid #94a3b8; height: 21px; width: 100%; }}
+                    h2 {{ font-size: 11pt; color: #1e3a8a; border-bottom: 2px solid #1e3a8a; padding-bottom: 2px; margin-top: 6px; margin-bottom: 8px; text-transform: uppercase; }}
+                    .q-box {{ margin-bottom: 8px; }}
+                    .q-title {{ font-weight: bold; color: #0f172a; margin-bottom: 2px; font-size: 8.5pt; }}
+                    .line {{ border-bottom: 1px solid #94a3b8; height: 19px; width: 100%; }}
                 </style></head><body>
                     <table class="header-table"><tr>
                         <td style="width: 60%;"><strong>Name:</strong> ___________________<br><strong>Date:</strong> _______ <strong>Period:</strong> ___</td>
@@ -184,11 +187,11 @@ if generate_btn:
                             <strong>Safety Hazard:</strong> [Insert Simple Details]
                         </div>
                         <div class="subheading">Context & Time Crunch</div>
-                        <p>[2-3 short, simple 5th-grade sentences. Bold key tools, specs, and parts.]</p>
+                        <p>[4-6 detailed, simple 5th-grade sentences introducing setting, team, time pressure, and job goals. Bold key tools, specs, and parts.]</p>
                         <div class="subheading">The Technical Dilemma</div>
-                        <p>[2-3 short, simple 5th-grade sentences explaining the problem and shortcut.]</p>
+                        <p>[4-6 detailed, simple 5th-grade sentences explaining missing parts, improper shortcuts, and specific equipment warnings.]</p>
                         <div class="subheading">Supervisor Pressure & Failure</div>
-                        <p>[2-3 short, simple 5th-grade sentences detailing the rush, wrong choice, and safety result.]</p>
+                        <p>[4-6 detailed, simple 5th-grade sentences detailing manager conversations, decision made under pressure, and resulting accident.]</p>
                     </div>
 
                     <div class="version-card">
@@ -200,11 +203,11 @@ if generate_btn:
                             <strong>Safety Hazard:</strong> [Insert Hazard Details]
                         </div>
                         <div class="subheading">Operational Context & Pressure</div>
-                        <p>[2-3 short sentences using clear trade vocabulary with bolding.]</p>
+                        <p>[4-6 detailed technical sentences describing operational metrics, timelines, crew setup, and project goals with bolding.]</p>
                         <div class="subheading">Material Mechanics & Shortcut</div>
-                        <p>[2-3 short sentences explaining tool limits and material specs.]</p>
+                        <p>[4-6 detailed technical sentences detailing material limits, torque/load values, specification mismatches, and improper substitutions.]</p>
                         <div class="subheading">Boss Pressure & System Failure</div>
-                        <p>[2-3 short sentences detailing time pressure, shortcut decision, and catastrophic failure.]</p>
+                        <p>[4-6 detailed technical sentences covering supervisor pushback, shortcuts taken, mechanical failure sequence, and immediate hazards.]</p>
                     </div>
 
                     <div style="page-break-before: always;"></div>
@@ -212,25 +215,25 @@ if generate_btn:
                     
                     <div class="q-box">
                         <p class="q-title">1. Identify the Main Hazard:</p>
-                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level trade question asking what went wrong mechanically and why it was dangerous]</p>
+                        <p style="margin:0 0 4px 0; font-size: 8pt; color: #475569;">[Write an 8th-grade level trade question asking what went wrong mechanically and why it was dangerous]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
                     <div class="q-box">
                         <p class="q-title">2. Safe Alternatives:</p>
-                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level question asking what safe choices the worker should have made instead of taking a shortcut]</p>
+                        <p style="margin:0 0 4px 0; font-size: 8pt; color: #475569;">[Write an 8th-grade level question asking what safe choices the worker should have made instead of taking a shortcut]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
                     <div class="q-box">
                         <p class="q-title">3. Workplace Culture & Pressure:</p>
-                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level question asking how rush deadlines or supervisor pressure changed their choices]</p>
+                        <p style="margin:0 0 4px 0; font-size: 8pt; color: #475569;">[Write an 8th-grade level question asking how rush deadlines or supervisor pressure changed their choices]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
                     <div class="q-box">
                         <p class="q-title">4. Professional Scripting:</p>
-                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level prompt asking students to write a two-sentence polite refusal to perform an unsafe task]</p>
+                        <p style="margin:0 0 4px 0; font-size: 8pt; color: #475569;">[Write an 8th-grade level prompt asking students to write a two-sentence polite refusal to perform an unsafe task]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
                 </body></html>
