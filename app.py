@@ -87,29 +87,29 @@ if generate_btn:
                 SPECIFIC SCENARIO: {custom_scenario if custom_scenario else "Create a realistic, trade-specific high-stakes ethical/safety scenario."}
 
                 === MANDATORY WORKSHEET READABILITY & FORMATTING REQUIREMENTS ===
-                Role: Expert CTE Curriculum Developer & Technical Writer.
-                Task: Rewrite and format the two CTE reading scenarios (Version A: Standard and Version B: Enrichment) to maximize readability, engagement, and information retention using modern CTE job-aid design principles.
 
-                1. STRUCTURAL CHUNKING:
-                   - Break continuous narrative paragraphs into logical, short sections using bold subheadings (e.g., ### Context & Time Pressure, ### The Technical Dilemma, ### Supervisor Pressure & Failure).
+                1. SECTION LABELS:
+                   - Label the two reading options exactly as:
+                     • `Standard Reading`
+                     • `Enrichment Reading`
+
+                2. READABILITY & LANGUAGE TARGETS:
+                   - Standard Reading: Write strictly at a 5TH-GRADE READING LEVEL. Use simple, direct, plain English words and short sentences. DO NOT use administrative numbers (e.g., no OSHA code citations like 1910.242), legal terms (e.g., no "tort liability"), or heavy corporate jargon.
+                   - Enrichment Reading: Write at a high school technical level. Focus on real trade mechanics, equipment specs, and material science, but avoid dry legal citations or academic bureaucracy. Keep it scannable, engaging, and practical.
+
+                3. STRUCTURAL CHUNKING:
+                   - Break continuous narrative paragraphs into logical, short sections using bold subheadings (e.g., ### Context & Time Crunch, ### The Technical Dilemma, ### Supervisor Pressure & Failure).
                    - Strictly limit each narrative section paragraph to a MAXIMUM of 2-3 sentences.
 
-                2. TECHNICAL CALLOUT BOX:
-                   - Position a visually distinct summary callout block (<div class="callout-box">) at the top of EACH version detailing:
-                     • Job & Equipment: [e.g., SUV Front Brake Service / Commercial Transport Overhaul]
-                     • Key Hardware: [e.g., Aluminum Steering Knuckle / High-Torque Pneumatic Setup]
-                     • Critical Failure: [e.g., Stripped Caliper Bolt Threads / Shattered Chrome Socket]
-                     • Safety Hazard: [e.g., Caliper detachment, flying metal shrapnel, workplace injury]
+                4. TECHNICAL CALLOUT BOX:
+                   - Position a summary callout block (<div class="callout-box">) at the top of EACH version detailing:
+                     • Job & Equipment: [e.g., Roof Truss Installation / Vehicle Service]
+                     • Key Hardware: [e.g., Structural Screws vs. Framing Nails]
+                     • Critical Failure: [e.g., Fastener snapping under heavy load]
+                     • Safety Hazard: [e.g., Structural collapse, serious injury]
 
-                3. VISUAL SCAFFOLDING & BOLDING:
-                   - Bold all critical trade tools, mechanical parts, spec values, regulations, and ethical choices (e.g., <b>pneumatic impact wrench</b>, <b>hand torque wrench</b>, <b>95 ft-lbs</b>, <b>OSHA Standard 1910.242</b>, <b>aluminum knuckle</b>).
-
-                4. DIFFERENTIATED READING TARGETS:
-                   - Version A (Standard Level): Use direct, clear syntax at an 8th-9th grade reading level. Define technical concepts naturally within the narrative.
-                   - Version B (Enrichment Level): Maintain rigorous industry-level vocabulary (e.g., anaerobic threadlocker, KPIs, OEM assembly, tort liability, ductility vs brittle failure), but use scannable formatting and short sentences so advanced text remains accessible.
-
-                5. CONTENT FIDELITY:
-                   - Do NOT remove core story facts (time pressure, equipment limits, manager/coworker pressure, ethical shortcut, mechanical failure, safety consequences). The story must remain 100% compatible with the 4 analytical questions at the end of the worksheet.
+                5. VISUAL SCAFFOLDING & BOLDING:
+                   - Bold all critical trade tools, mechanical parts, spec values, and ethical choices (e.g., <b>structural screws</b>, <b>framing nails</b>, <b>500 lbs</b>, <b>impact driver</b>).
 
                 6. QUESTION GRADE LEVEL:
                    - Write all four (4) written response questions strictly at a clear, direct 8TH-GRADE READING LEVEL.
@@ -149,15 +149,15 @@ if generate_btn:
                 <!DOCTYPE html>
                 <html><head><style>
                     @page {{ size: A4; margin: 12mm 15mm; }}
-                    body {{ font-family: Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.45; font-size: 9pt; }}
+                    body {{ font-family: Helvetica, Arial, sans-serif; color: #1e293b; line-height: 1.45; font-size: 9.5pt; }}
                     .header-table {{ width: 100%; border-bottom: 2px solid #1e3a8a; margin-bottom: 8px; padding-bottom: 4px; }}
                     .title {{ text-align: center; font-size: 14pt; font-weight: bold; color: #0f172a; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }}
                     .instructions {{ background-color: #f1f5f9; border-left: 4px solid #1e3a8a; padding: 6px 10px; margin-bottom: 10px; font-style: italic; font-size: 8.5pt; color: #334155; border-radius: 0 4px 4px 0; }}
                     
-                    .version-card {{ background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; margin-bottom: 10px; }}
-                    .version-title {{ font-size: 9.5pt; font-weight: bold; color: #1e3a8a; border-bottom: 1.5px solid #cbd5e1; padding-bottom: 3px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }}
+                    .version-card {{ background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; }}
+                    .version-title {{ font-size: 10pt; font-weight: bold; color: #1e3a8a; border-bottom: 1.5px solid #cbd5e1; padding-bottom: 3px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }}
                     
-                    .callout-box {{ background-color: #f0f9ff; border: 1px solid #bae6fd; border-left: 3.5px solid #0284c7; padding: 6px 8px; margin-bottom: 8px; font-size: 8pt; border-radius: 3px; color: #0369a1; line-height: 1.35; }}
+                    .callout-box {{ background-color: #f0f9ff; border: 1px solid #bae6fd; border-left: 3.5px solid #0284c7; padding: 6px 8px; margin-bottom: 8px; font-size: 8.5pt; border-radius: 3px; color: #0369a1; line-height: 1.35; }}
                     .callout-box strong {{ color: #0c4a6e; }}
                     
                     .subheading {{ font-size: 8.5pt; font-weight: bold; color: #0f172a; margin-top: 6px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.3px; }}
@@ -176,55 +176,55 @@ if generate_btn:
                     <div class="instructions">Following are two versions of the same scenario. Choose one to read, then proceed to the back page to answer all four analytical questions in full sentences.</div>
                     
                     <div class="version-card">
-                        <div class="version-title">Version A: Standard Level (8th–9th Grade Reading Target)</div>
+                        <div class="version-title">Standard Reading</div>
                         <div class="callout-box">
-                            <strong>Job & Equipment:</strong> [Insert Details]<br>
-                            <strong>Key Hardware:</strong> [Insert Details]<br>
-                            <strong>Critical Failure:</strong> [Insert Details]<br>
-                            <strong>Safety Hazard:</strong> [Insert Details]
+                            <strong>Job & Equipment:</strong> [Insert Simple Details]<br>
+                            <strong>Key Hardware:</strong> [Insert Simple Details]<br>
+                            <strong>Critical Failure:</strong> [Insert Simple Details]<br>
+                            <strong>Safety Hazard:</strong> [Insert Simple Details]
                         </div>
                         <div class="subheading">Context & Time Crunch</div>
-                        <p>[2-3 short sentences. Bold key trade tools, specs, and parts.]</p>
+                        <p>[2-3 short, simple 5th-grade sentences. Bold key tools, specs, and parts.]</p>
                         <div class="subheading">The Technical Dilemma</div>
-                        <p>[2-3 short sentences explaining the technical issue and shortcut.]</p>
+                        <p>[2-3 short, simple 5th-grade sentences explaining the problem and shortcut.]</p>
                         <div class="subheading">Supervisor Pressure & Failure</div>
-                        <p>[2-3 short sentences detailing pressure, choice made, and physical consequence.]</p>
+                        <p>[2-3 short, simple 5th-grade sentences detailing the rush, wrong choice, and safety result.]</p>
                     </div>
 
                     <div class="version-card">
-                        <div class="version-title">Version B: Enrichment Level (Advanced / Industry Target)</div>
+                        <div class="version-title">Enrichment Reading</div>
                         <div class="callout-box">
-                            <strong>Job & Equipment:</strong> [Insert Industry Details]<br>
-                            <strong>Key Hardware:</strong> [Insert Advanced Specs]<br>
-                            <strong>Critical Failure:</strong> [Insert Engineering Failure]<br>
-                            <strong>Safety Hazard:</strong> [Insert Regulatory / Physical Hazard]
+                            <strong>Job & Equipment:</strong> [Insert Technical Details]<br>
+                            <strong>Key Hardware:</strong> [Insert Hardware Specs]<br>
+                            <strong>Critical Failure:</strong> [Insert Mechanical Failure]<br>
+                            <strong>Safety Hazard:</strong> [Insert Hazard Details]
                         </div>
-                        <div class="subheading">Operational Context & Metrics</div>
-                        <p>[2-3 short sentences using rigorous industry vocabulary with bolding.]</p>
-                        <div class="subheading">Material Physics & Procedural Violation</div>
-                        <p>[2-3 short sentences with technical specifications and OSHA standards.]</p>
-                        <div class="subheading">Authority Bias & Catastrophic Outcome</div>
-                        <p>[2-3 short sentences detailing production pressure, decision, and severe system failure.]</p>
+                        <div class="subheading">Operational Context & Pressure</div>
+                        <p>[2-3 short sentences using clear trade vocabulary with bolding.]</p>
+                        <div class="subheading">Material Mechanics & Shortcut</div>
+                        <p>[2-3 short sentences explaining tool limits and material specs.]</p>
+                        <div class="subheading">Boss Pressure & System Failure</div>
+                        <p>[2-3 short sentences detailing time pressure, shortcut decision, and catastrophic failure.]</p>
                     </div>
 
                     <div style="page-break-before: always;"></div>
                     <h2>Written Responses</h2>
                     
                     <div class="q-box">
-                        <p class="q-title">1. Identify the Main Technical Hazard:</p>
+                        <p class="q-title">1. Identify the Main Hazard:</p>
                         <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level trade question asking what went wrong mechanically and why it was dangerous]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
                     <div class="q-box">
                         <p class="q-title">2. Safe Alternatives:</p>
-                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level question asking what safe choices the technician should have made instead of taking a shortcut]</p>
+                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level question asking what safe choices the worker should have made instead of taking a shortcut]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
                     <div class="q-box">
                         <p class="q-title">3. Workplace Culture & Pressure:</p>
-                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level question asking how rush deadlines or supervisor influence changed their choices]</p>
+                        <p style="margin:0 0 4px 0; font-size: 8.5pt; color: #475569;">[Write an 8th-grade level question asking how rush deadlines or supervisor pressure changed their choices]</p>
                         <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
                     </div>
 
